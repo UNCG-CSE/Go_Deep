@@ -1,9 +1,5 @@
 from __future__ import division
 def getsimj(term1,term2,ancestors):
-	if term1 not in ancestors:
-		ancestors[term1]=set(term1)
-	if term2 not in ancestors:
-		ancestors[term2]=set(term2)
 	if len(set.union(ancestors[term1],ancestors[term2])) >0:
 		simj=len(set.intersection(ancestors[term1],ancestors[term2]))/len(set.union(ancestors[term1],ancestors[term2]))
 	else:
@@ -30,7 +26,7 @@ def main():
 	subsumers=load_subsumers()
 
 	for line in infile:
-		if "O	O" not in line:
+		if "NA	NA" not in line:
 			line=line.replace(":","_")
 			term1=line.strip().split("\t")[1]
 			term2=line.strip().split("\t")[2]
